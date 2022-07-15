@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment # Kubernetes resource type
+metadata:
+  name: sample-app-deployment1 # Name of the deplotment (Resource name)
+  labels:
+    app: sample-app #Name of the application
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sample-app #Name of the application
+  template:
+    metadata:
+      labels:
+        app: sample-app #Name of the application
+    spec:
+      containers:
+      - name: sample-app-container #Name of the container where the application is running. 
+        image: us.gcr.io/webminar-352714/sample-container:version1 # Container image url.
+        ports:
+        - containerPort: 8080 # Port no where the application is listening for request in the container. 
+      restartPolicy: Always

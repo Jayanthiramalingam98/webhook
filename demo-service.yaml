@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service # Kubernetes resource type
+metadata:
+  name: sample-app-service # Name of the service(Resource name)
+spec:
+  selector:
+    app: sample-app # Name of the application which will be accessed using this service
+  ports:
+    - protocol: TCP
+      port: 80 # Port no of service listening for the request from internet clients (browser/command-line etc..)
+      targetPort: 8080 # Port no where the application is listening for the request in the container. 
+  type: LoadBalancer # Type of service.
